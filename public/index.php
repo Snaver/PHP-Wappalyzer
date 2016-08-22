@@ -18,7 +18,9 @@ $app->get('/', function (Request $request, Response $response) {
             $wappalyzer->analyze()
         );
     } catch (Exception $e) {
-        $response = array('error' => $e->getMessage());
+        $response->withHeader('Content-type', 'application/json')->withJson(
+            array('error' => $e->getMessage());
+        );
     }
 
     return $response;
