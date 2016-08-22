@@ -9,13 +9,17 @@ require('../Wappalyzer.php');
 
 $app = new \Slim\App;
 $app->get('/', function (Request $request, Response $response) {
-    $params = $request->getQueryParams();
+    try {
+        $params = $request->getQueryParams();
 
-    $wappalyzer = new Wappalyzer( $params['url'] );
+        $wappalyzer = new Wappalyzer( $params['url'] );
 
-    $response->withHeader('Content-type', 'application/json')->withJson(
-        $wappalyzer->analyze()
-    );
+        $response->withHeader('Content-type', 'application/json')->withJson(
+            $wappalyzer->analyze()
+        );
+    } catch (Exception $e) {
+        $response = array('error' => $e->getMessage());
+    }
 
     return $response;
 });
