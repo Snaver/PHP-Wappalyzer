@@ -19,7 +19,7 @@ $app->get('/', function (Request $request, Response $response) {
         );
     } catch (Exception $e) {
         $response->withHeader('Content-type', 'application/json')->withJson(
-            array('error' => $e->getMessage());
+            array('error' => $e->getMessage())
         );
     }
 
