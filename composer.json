@@ -1,0 +1,11 @@
+{
+    "require": {
+        "php": "^5.6.0",
+        "ext-v8js": "*",
+        "ext-mbstring": "*",
+        "slim/slim": "^3.3"
+    },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*"
+    }
+}
